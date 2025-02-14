@@ -3,180 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Education Details</title>
+    <title>Stylish Marquee</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(-45deg, #3498db, #8e44ad, #2ecc71, #e74c3c);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-out;
-        }
-
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.8em;
-            font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 15px;
-        }
-
-        th, td {
-            padding: 18px;
-            text-align: left;
-            transition: all 0.3s ease;
-        }
-
-        th {
-            background-color: #3498db;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
             color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            font-size: 0.9em;
+            text-align: center;
+            padding: 20px;
         }
-
-        tr {
-            background-color: #f8f9fa;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+            padding: 10px 0;
         }
-
-        tr:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        .marquee {
+            display: inline-block;
+            font-size: 24px;
+            padding: 10px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            border-radius: 10px;
+            animation: scroll-left 10s linear infinite;
         }
-
-        td:first-child, th:first-child {
-            border-radius: 15px 0 0 15px;
+        @keyframes scroll-left {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
         }
-
-        td:last-child, th:last-child {
-            border-radius: 0 15px 15px 0;
+        .slide-marquee {
+            animation: slide 3s ease-out forwards;
         }
-
-        @media screen and (max-width: 600px) {
-            .container {
-                padding: 20px;
+        @keyframes slide {
+            from {
+                transform: translateX(100%);
             }
-
-            table, thead, tbody, th, td, tr {
-                display: block;
+            to {
+                transform: translateX(0);
             }
-
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
+        }
+        .alternate-marquee {
+            display: inline-block;
+            animation: alternate-move 4s ease-in-out infinite alternate;
+        }
+        @keyframes alternate-move {
+            from {
+                transform: translateX(0);
             }
-
-            tr {
-                margin-bottom: 20px;
-                border-radius: 15px;
-                overflow: hidden;
-            }
-
-            td {
-                border: none;
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
-                border-bottom: 1px solid #ecf0f1;
-            }
-
-            td:last-child {
-                border-bottom: none;
-            }
-
-            td:before {
-                position: absolute;
-                top: 12px;
-                left: 12px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                content: attr(data-label);
-                font-weight: 600;
-                text-align: left;
-                color: #3498db;
-                font-size: 0.9em;
-            }
-
-            tr, td:first-child, td:last-child {
-                border-radius: 15px;
+            to {
+                transform: translateX(50px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Education Details</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>SNo</th>
-                    <th>Course</th>
-                    <th>Board</th>
-                    <th>College</th>
-                    <th>Year of Passing</th>
-                    <th>Percentage</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="SNo">1</td>
-                    <td data-label="Course">DCSE</td>
-                    <td data-label="Board">ICSE</td>
-                    <td data-label="College">DPS</td>
-                    <td data-label="Year of Passing">2008</td>
-                    <td data-label="Percentage">90%</td>
-                </tr>
-                <tr>
-                    <td data-label="SNo">2</td>
-                    <td data-label="Course">DCSE</td>
-                    <td data-label="Board">ICSE</td>
-                    <td data-label="College">DPS</td>
-                    <td data-label="Year of Passing">2010</td>
-                    <td data-label="Percentage">95%</td>
-                </tr>
-            </tbody>
-        </table>
+    <h2>Modern Marquee Effects</h2>
+    
+    <div class="marquee-container">
+        <div class="marquee">Welcome to the Cool Marquee!</div>
+    </div>
+    
+    <h2>Slide Effect:</h2>
+    <div class="marquee-container">
+        <div class="marquee slide-marquee">This is a sliding marquee...</div>
+    </div>
+    
+    <h2>Alternate Bounce Effect:</h2>
+    <div class="marquee-container">
+        <div class="marquee alternate-marquee">Bouncing marquee effect...</div>
     </div>
 </body>
 </html>
